@@ -23,7 +23,7 @@ const Date = styled.div`
   width: 5rem;
   height: 5rem;
   border-radius: 12px;
-  background-color: #3498db;
+  background-color: #fed330;
   color: #fff;
 `;
 

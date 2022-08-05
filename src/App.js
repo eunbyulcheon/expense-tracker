@@ -1,4 +1,5 @@
 import Expenses from './components/Expenses/Expenses';
+import NewExpense from './components/NewExpense/NewExpense';
 import GlobalStyles from './styles/GlobalStyles';
 
 const App = () => {
@@ -24,9 +25,15 @@ const App = () => {
     },
   ];
 
+  const addExpenseHandler = expense => {
+    console.log('in app.js');
+    console.log(expense);
+  };
+
   return (
     <>
       <GlobalStyles />
+      <NewExpense onAddExpense={addExpenseHandler} />
       <Expenses expenses={expenses} />
     </>
   );

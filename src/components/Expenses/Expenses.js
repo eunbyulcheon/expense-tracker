@@ -19,12 +19,12 @@ const Expenses = ({ expenses }) => {
 
 const Container = styled.div`
   padding: 1rem;
-  background-color: rgba(189, 195, 199, 0.2);
+  background-color: rgba(189, 195, 199, 0.1);
   margin: 2rem auto;
   width: 50rem;
   max-width: 95%;
   border-radius: 12px;
-  box-shadow: 0 1px 8px rgba(0, 0, 0, 0.25);
+  box-shadow: 0 1px 5px rgba(0, 0, 0, 0.2);
 `;
 
 export default Expenses;

@@ -1,15 +1,22 @@
-import React from 'react';
+import React, { useState } from 'react';
 import ExpenseDate from './ExpenseDate';
 import styled from 'styled-components';
 
 const ExpenseItem = ({ title, price, date }) => {
+  const [isTitle, setIsTitle] = useState(title);
+
+  const titleHandler = () => {
+    setIsTitle('Updated!');
+  };
+
   return (
     <Container>
       <ExpenseDate date={date} />
       <Description>
-        <Title>{title}</Title>
+        <Title>{isTitle}</Title>
         <Price>${price}</Price>
       </Description>
+      <TitleChangeBtn onClick={titleHandler}>Change Title</TitleChangeBtn>
     </Container>
   );
 };
@@ -20,9 +27,9 @@ const Container = styled.section`
   align-items: center;
   padding: 0.5rem;
   margin: 1rem 0;
-  border: 2px solid #3498db;
+  border: 2px solid #fed330;
   border-radius: 12px;
-  box-shadow: 0 1px 8px rgba(0, 0, 0, 0.25);
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.2);
   background-color: #fff;
 `;
 
@@ -57,7 +64,7 @@ const Title = styled.h2`
 const Price = styled.div`
   padding: 0.5rem;
   border-radius: 12px;
-  background-color: #3498db;
+  background-color: #fed330;
   color: white;
   font-size: 1rem;
   font-weight: bold;
@@ -67,5 +74,7 @@ const Price = styled.div`
     padding: 0.5rem 1.5rem;
   }
 `;
+
+const TitleChangeBtn = styled.button``;
 
 export default ExpenseItem;
