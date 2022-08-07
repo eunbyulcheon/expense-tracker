@@ -1,10 +1,22 @@
-import React from 'react';
+import React, { useState } from 'react';
 import ExpenseItem from './ExpenseItem';
 import styled from 'styled-components';
+import ExpenseFilter from './ExpenseFilter';
 
 const Expenses = ({ expenses }) => {
+  const [filteredYear, setFilteredYear] = useState('2020');
+
+  const filterChangeHandler = selectedYear => {
+    setFilteredYear(selectedYear);
+  };
+
   return (
     <Container>
+      <ExpenseFilter
+        selected={filteredYear}
+        onChangeFilter={filterChangeHandler}
+      />
+
       {expenses.map(list => (
         <ExpenseItem
           key={list.id}
