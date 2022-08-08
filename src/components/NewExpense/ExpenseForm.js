@@ -20,11 +20,13 @@ const ExpenseForm = ({ onSaveExpenseData }) => {
 
   const submitHandler = e => {
     e.preventDefault();
+
     const expenseData = {
       title: title,
       amount: amount,
-      date: date,
+      date: new Date(date),
     };
+
     onSaveExpenseData(expenseData);
     setTitle('');
     setAmount('');
