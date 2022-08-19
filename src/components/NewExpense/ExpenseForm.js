@@ -2,35 +2,35 @@ import React, { useState } from 'react';
 import styled from 'styled-components';
 
 const ExpenseForm = ({ onSaveExpenseData }) => {
-  const [title, setTitle] = useState('');
-  const [amount, setAmount] = useState('');
-  const [date, setDate] = useState('');
+  const [titleInput, setTitleInput] = useState('');
+  const [amountInput, setAmountInput] = useState('');
+  const [dateInput, setDateInput] = useState('');
 
   const titleChangeHandler = e => {
-    setTitle(e.target.value);
+    setTitleInput(e.target.value);
   };
 
   const amountChangeHandler = e => {
-    setAmount(e.target.value);
+    setAmountInput(e.target.value);
   };
 
   const dateChangeHandler = e => {
-    setDate(e.target.value);
+    setDateInput(e.target.value);
   };
 
   const submitHandler = e => {
     e.preventDefault();
 
     const expenseData = {
-      title: title,
-      amount: amount,
-      date: new Date(date),
+      title: titleInput,
+      amount: amountInput,
+      date: new Date(dateInput),
     };
 
     onSaveExpenseData(expenseData);
-    setTitle('');
-    setAmount('');
-    setDate('');
+    setTitleInput('');
+    setAmountInput('');
+    setDateInput('');
   };
 
   return (
@@ -38,7 +38,11 @@ const ExpenseForm = ({ onSaveExpenseData }) => {
       <Controls>
         <Control>
           <Title>Title</Title>
-          <TitleInput type="text" value={title} onChange={titleChangeHandler} />
+          <TitleInput
+            type="text"
+            value={titleInput}
+            onChange={titleChangeHandler}
+          />
         </Control>
         <Control>
           <Amount>Amount</Amount>
@@ -46,7 +50,7 @@ const ExpenseForm = ({ onSaveExpenseData }) => {
             type="number"
             min="0.01"
             step="0.01"
-            value={amount}
+            value={amountInput}
             onChange={amountChangeHandler}
           />
         </Control>
@@ -56,7 +60,7 @@ const ExpenseForm = ({ onSaveExpenseData }) => {
             type="date"
             min="2019-01-01"
             max="2022-12-31"
-            value={date}
+            value={dateInput}
             onChange={dateChangeHandler}
           />
         </Control>
