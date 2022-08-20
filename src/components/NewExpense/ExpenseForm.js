@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import styled from 'styled-components';
 
-const ExpenseForm = ({ onSaveExpenseData }) => {
+const ExpenseForm = ({ onSaveExpenseData, onCancel }) => {
   const [titleInput, setTitleInput] = useState('');
   const [amountInput, setAmountInput] = useState('');
   const [dateInput, setDateInput] = useState('');
@@ -23,8 +23,8 @@ const ExpenseForm = ({ onSaveExpenseData }) => {
 
     const expenseData = {
       title: titleInput,
-      amount: amountInput,
-      date: new Date(dateInput),
+      amount: +amountInput,
+      date: new window.Date(dateInput),
     };
 
     onSaveExpenseData(expenseData);
@@ -66,6 +66,9 @@ const ExpenseForm = ({ onSaveExpenseData }) => {
         </Control>
       </Controls>
       <Actions>
+        <CancelBtn type="button" onClick={onCancel}>
+          Cancel
+        </CancelBtn>
         <AddBtn type="submit">Add Expense</AddBtn>
       </Actions>
     </ContainerForm>
@@ -124,5 +127,7 @@ const AddBtn = styled.button`
     background-color: #fd9644;
   }
 `;
+
+const CancelBtn = styled(AddBtn)``;
 
 export default ExpenseForm;

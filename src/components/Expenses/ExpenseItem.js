@@ -3,23 +3,22 @@ import ExpenseDate from './ExpenseDate';
 import styled from 'styled-components';
 
 const ExpenseItem = ({ title, price, date }) => {
-  const [isTitle, setIsTitle] = useState(title);
-
-  const titleHandler = () => {
-    setIsTitle('Updated!');
-  };
-
   return (
-    <Container>
-      <ExpenseDate date={date} />
-      <Description>
-        <Title>{isTitle}</Title>
-        <Price>${price}</Price>
-      </Description>
-      <TitleChangeBtn onClick={titleHandler}>Change Title</TitleChangeBtn>
-    </Container>
+    <ListItem>
+      <Container>
+        <ExpenseDate date={date} />
+        <Description>
+          <Title>{title}</Title>
+          <Price>${price}</Price>
+        </Description>
+      </Container>
+    </ListItem>
   );
 };
+
+const ListItem = styled.li`
+  list-style: none;
+`;
 
 const Container = styled.section`
   display: flex;
